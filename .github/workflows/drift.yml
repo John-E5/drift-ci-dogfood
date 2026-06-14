@@ -1,0 +1,20 @@
+name: drift
+on:
+  pull_request:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  drift:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: Drift-CI/drift-ci@v1
+        with:
+          provider: anthropic
+          api-key: ${{ secrets.ANTHROPIC_API_KEY }}
+          # suite/config default to .drift/suite.yaml + .drift/config.yaml
+          # baseline-source defaults to `branch` (the PR's committed baselines)
+          # fail-on-regression + post-comment default to true
