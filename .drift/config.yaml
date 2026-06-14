@@ -1,0 +1,19 @@
+version: 1
+provider:
+  name: anthropic
+  model: claude-sonnet-4-5
+
+storage:
+  type: json-file
+
+thresholds:
+  regression: 0.10
+  alert: 0.20
+
+baseline:
+  source: branch
+
+concurrency: 5
+timeoutMs: 30000
+
+suite: .drift/suite.yaml

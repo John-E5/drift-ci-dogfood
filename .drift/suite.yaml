@@ -1,0 +1,10 @@
+version: 1
+id: example
+name: Example suite
+description: Starter suite. Replace with your own cases.
+evaluators:
+  - exact-match
+cases:
+  - id: example-case
+    input: Say hello
+    expected: Hello
