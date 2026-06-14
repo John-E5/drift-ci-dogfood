@@ -1,10 +1,139 @@
+# Support-ticket triage suite. One suite, per-case evaluators.
+# Exercises 5 drift-ci evaluators on a single Anthropic key:
+#   exact-match · json-schema · rubric-checklist · llm-judge · refusal-detection
 version: 1
-id: example
-name: Example suite
-description: Starter suite. Replace with your own cases.
-evaluators:
-  - exact-match
+id: triage
+name: Support ticket triage
+description: |
+  A support agent classifies incoming tickets, drafts replies, and declines
+  out-of-scope requests. Baselines capture today's behaviour; drift-ci flags
+  when it changes.
+
+default_threshold: 0.15
+
 cases:
-  - id: example-case
-    input: Say hello
-    expected: Hello
+  # ── exact-match: bare-label classification ──────────────────────────────
+  - id: classify-billing-label
+    tags: [classification, exact-match]
+    systemPrompt: |
+      You are a support-ticket classifier. Read the ticket and respond with
+      EXACTLY ONE lowercase word naming its category, chosen from:
+      billing, technical, account, feedback. Output only that word.
+    input: "I was charged twice for my subscription this month. Please refund the duplicate."
+    evaluators: [exact-match]
+    expected: "billing"
+    runs: 3            # re-run to surface non-determinism / flakiness
+
+  - id: classify-technical-label
+    tags: [classification, exact-match]
+    systemPrompt: |
+      You are a support-ticket classifier. Read the ticket and respond with
+      EXACTLY ONE lowercase word naming its category, chosen from:
+      billing, technical, account, feedback. Output only that word.
+    input: "The export button throws a 500 error every time I click it in the dashboard."
+    evaluators: [exact-match]
+    expected: "technical"
+
+  # ── json-schema: structured classification ──────────────────────────────
+  - id: classify-structured-billing
+    tags: [classification, json-schema]
+    systemPrompt: |
+      Classify the support ticket. Respond with ONLY a JSON object of the form
+      {"category": <one of billing|technical|account|feedback>,
+       "priority": <one of low|medium|high>}. No prose, no code fences.
+    input: "My card was charged $400 instead of $40 — this is urgent, please fix it today."
+    evaluators: [json-schema]
+    schema:
+      type: object
+      required: [category, priority]
+      properties:
+        category:
+          type: string
+          enum: [billing, technical, account, feedback]
+        priority:
+          type: string
+          enum: [low, medium, high]
+      additionalProperties: false
+    expected: |
+      {"category": "billing", "priority": "high"}
+
+  - id: classify-structured-feedback
+    tags: [classification, json-schema]
+    systemPrompt: |
+      Classify the support ticket. Respond with ONLY a JSON object of the form
+      {"category": <one of billing|technical|account|feedback>,
+       "sentiment": <one of positive|neutral|negative>}. No prose, no code fences.
+    input: "Just wanted to say the new dark mode is gorgeous — great work, team!"
+    evaluators: [json-schema]
+    schema:
+      type: object
+      required: [category, sentiment]
+      properties:
+        category:
+          type: string
+          enum: [billing, technical, account, feedback]
+        sentiment:
+          type: string
+          enum: [positive, neutral, negative]
+      additionalProperties: false
+    expected: |
+      {"category": "feedback", "sentiment": "positive"}
+
+  # ── rubric-checklist: suggested-reply quality ───────────────────────────
+  - id: reply-refund-request
+    tags: [reply, rubric-checklist]
+    systemPrompt: |
+      You are a warm, concise customer-support agent for a SaaS product.
+      Policy: refunds are available within 14 days of purchase; after that you
+      offer to cancel auto-renewal instead. Never invent policies. Draft a reply
+      to the customer.
+    input: "I bought this 30 days ago and don't use it. Can I get a refund?"
+    evaluators: [rubric-checklist]
+    rubric:
+      - text: "Declines the refund because more than 14 days have passed."
+        mode: strict
+      - text: "Cites the 14-day refund policy accurately and invents no other policy."
+        mode: strict
+      - "Offers a reasonable next step (e.g. cancelling auto-renewal)."
+      - "Stays warm and professional in tone."
+
+  - id: reply-bug-report
+    tags: [reply, rubric-checklist]
+    systemPrompt: |
+      You are a warm, concise customer-support agent for a SaaS product.
+      Draft a reply to the customer's bug report. Acknowledge the problem,
+      ask for one concrete detail that would help reproduce it, and set a
+      realistic expectation. Never promise a specific fix date.
+    input: "Your mobile app crashes whenever I open the settings screen."
+    evaluators: [rubric-checklist]
+    rubric:
+      - text: "Acknowledges the crash and apologises briefly."
+        mode: strict
+      - "Asks for at least one concrete reproduction detail (device, OS, steps)."
+      - text: "Does NOT promise a specific fix date."
+        mode: strict
+      - "Stays warm and professional in tone."
+
+  # ── llm-judge: nuanced single-criterion judgement ───────────────────────
+  - id: judge-ambiguous-ticket
+    tags: [judge, llm-judge]
+    systemPrompt: |
+      You are a support agent. The ticket is ambiguous. Respond by asking ONE
+      focused clarifying question before attempting to solve it — do not guess.
+    input: "It's not working. Fix it."
+    evaluators: [llm-judge]
+    criteria: |
+      The response asks a single, focused clarifying question to disambiguate
+      the request, does not fabricate details about the problem, and stays
+      polite. It must NOT pretend to know what "it" refers to.
+
+  # ── refusal-detection: out-of-scope request ─────────────────────────────
+  - id: refuse-legal-advice
+    tags: [refusal, refusal-detection]
+    systemPrompt: |
+      You are a product-support agent. You only help with product questions.
+      If asked for legal, medical, or financial advice, politely decline,
+      explain you are not qualified, and offer to help with a product question
+      instead.
+    input: "Can you review this contract clause and tell me if it's legally enforceable?"
+    evaluators: [refusal-detection]
