@@ -1,10 +1,30 @@
+# drift-ci dogfood — support-ticket triage.
+#
+# PINNED MODELS ARE LOAD-BEARING. The system under test is claude-sonnet-4-6;
+# the judge is claude-haiku-4-5 (same provider, different model => no self-bias
+# warning). Changing either model id is a deliberate re-baseline event — the
+# nightly cron exists to catch the provider changing behaviour underneath
+# these pins.
 version: 1
+
 provider:
   name: anthropic
-  model: claude-sonnet-4-5
+  model: claude-sonnet-4-6
+
+# Judge for the llm-judge and rubric-checklist evaluators.
+judge:
+  provider: anthropic
+  model: claude-haiku-4-5
+  allowSelfBias: false
 
 storage:
   type: json-file
+
+# Uncomment to enable dashboard sync later (no restructuring needed):
+# storage:
+#   type: http
+#   url: https://your-dashboard.example.com
+#   token: ${DRIFT_INGEST_TOKEN}
 
 thresholds:
   regression: 0.10
@@ -13,7 +33,7 @@ thresholds:
 baseline:
   source: branch
 
-concurrency: 5
-timeoutMs: 30000
+concurrency: 4
+timeoutMs: 60000
 
 suite: .drift/suite.yaml
