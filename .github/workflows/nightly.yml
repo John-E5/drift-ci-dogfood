@@ -1,0 +1,22 @@
+name: nightly-drift
+on:
+  schedule:
+    - cron: '0 6 * * *'   # 06:00 UTC daily
+  workflow_dispatch: {}     # allow manual runs for testing
+
+permissions:
+  contents: read
+
+jobs:
+  nightly:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: Drift-CI/drift-ci@v1
+        with:
+          provider: anthropic
+          api-key: ${{ secrets.ANTHROPIC_API_KEY }}
+          # Runs on main against main's committed baselines. No PR => no comment.
+          # A failure here with no code change means the model drifted.
+          post-comment: 'false'
+          fail-on-regression: 'true'
