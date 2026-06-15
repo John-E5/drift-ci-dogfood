@@ -25,3 +25,8 @@ jobs:
           # The action reads process.env.GITHUB_TOKEN to post the PR comment.
           # Without this the comment is silently skipped.
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # The action passes `api-key` to the TEST provider but NOT the judge
+          # provider (drift-ci bug — resolveJudgeProvider ignores the input).
+          # The judge (haiku) falls back to this env var. Remove once the action
+          # propagates api-key to the judge.
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
