@@ -1,0 +1,18 @@
+{
+  "$schema": "https://drift-ci.dev/schema/baseline-v1.json",
+  "caseId": "classify-structured-feedback",
+  "suiteId": "triage",
+  "suiteHash": "sha256:a6bf31c6c5bd0b24b234c9cfd3ea0d33f2329452e470c745c43d793c6d505230",
+  "score": 1,
+  "output": "{\"category\": \"feedback\", \"sentiment\": \"positive\"}",
+  "outputTruncated": false,
+  "outputFullHash": "sha256:1c948e4cb4f485d35b54ecf2361d2d1a1e0caa1cc0f89d3d5763ea339ca018f0",
+  "evaluatorBreakdown": {
+    "json-schema": 1
+  },
+  "capturedAt": "2026-06-15T10:25:23.709Z",
+  "capturedBy": {
+    "runId": "17063c59-2baf-4fed-a8d9-7745ad4286e7",
+    "provider": "anthropic/claude-sonnet-4-6"
+  }
+}

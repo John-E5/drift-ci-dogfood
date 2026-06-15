@@ -1,0 +1,18 @@
+{
+  "$schema": "https://drift-ci.dev/schema/baseline-v1.json",
+  "caseId": "classify-structured-billing",
+  "suiteId": "triage",
+  "suiteHash": "sha256:b4e492f31168350abe39dc76b9152df21838c8d33cab97de0916d43095f9a440",
+  "score": 1,
+  "output": "{\"category\": \"billing\", \"priority\": \"high\"}",
+  "outputTruncated": false,
+  "outputFullHash": "sha256:d3b8b264ed70126b578702b0b81771961e1b23122909ec08bea6cea9976b9861",
+  "evaluatorBreakdown": {
+    "json-schema": 1
+  },
+  "capturedAt": "2026-06-15T10:25:23.709Z",
+  "capturedBy": {
+    "runId": "17063c59-2baf-4fed-a8d9-7745ad4286e7",
+    "provider": "anthropic/claude-sonnet-4-6"
+  }
+}

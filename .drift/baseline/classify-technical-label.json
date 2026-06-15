@@ -1,0 +1,18 @@
+{
+  "$schema": "https://drift-ci.dev/schema/baseline-v1.json",
+  "caseId": "classify-technical-label",
+  "suiteId": "triage",
+  "suiteHash": "sha256:7366f7fc48f847aedb8863b0c5543fdb4a29e228c938f3c4ea72d489aa8223a5",
+  "score": 1,
+  "output": "technical",
+  "outputTruncated": false,
+  "outputFullHash": "sha256:83e3b78f14e08cc5e0bf037b1668b27bcde446cb05f04f86845deaf7812be71d",
+  "evaluatorBreakdown": {
+    "exact-match": 1
+  },
+  "capturedAt": "2026-06-15T10:25:23.708Z",
+  "capturedBy": {
+    "runId": "17063c59-2baf-4fed-a8d9-7745ad4286e7",
+    "provider": "anthropic/claude-sonnet-4-6"
+  }
+}

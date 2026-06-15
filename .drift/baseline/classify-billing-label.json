@@ -1,0 +1,18 @@
+{
+  "$schema": "https://drift-ci.dev/schema/baseline-v1.json",
+  "caseId": "classify-billing-label",
+  "suiteId": "triage",
+  "suiteHash": "sha256:39c552099904648b20aec750d14cfde45bd5e259c754a2d57736e7df452ef369",
+  "score": 1,
+  "output": "billing",
+  "outputTruncated": false,
+  "outputFullHash": "sha256:0c95c7ece1ce1a9750275ef1c6d7ad6b278f70d66592207783ffe7d58474cc01",
+  "evaluatorBreakdown": {
+    "exact-match": 1
+  },
+  "capturedAt": "2026-06-15T10:25:23.706Z",
+  "capturedBy": {
+    "runId": "17063c59-2baf-4fed-a8d9-7745ad4286e7",
+    "provider": "anthropic/claude-sonnet-4-6"
+  }
+}
