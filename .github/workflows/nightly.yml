@@ -22,8 +22,3 @@ jobs:
           # A failure here with no code change means the model drifted.
           post-comment: 'false'
           fail-on-regression: 'true'
-        env:
-          # Judge provider needs the key via env — the action passes `api-key`
-          # to the test provider but not the judge (drift-ci bug). Remove once
-          # the action propagates api-key to the judge.
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
