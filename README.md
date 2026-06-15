@@ -41,9 +41,9 @@ git add .drift/baseline && git commit   # commit baselines in the SAME PR
 
 ## Pinned models are load-bearing
 
-`.drift/config.yaml` pins exact model ids. Changing one is a deliberate
+`.drift/config.yaml` pins the exact model id. Changing it is a deliberate
 re-baseline event, not a casual edit — the nightly cron only means anything
-because the models are pinned.
+because the model is pinned.
 
 ## Local setup
 
