@@ -1,0 +1,18 @@
+{
+  "$schema": "https://drift-ci.dev/schema/baseline-v1.json",
+  "caseId": "reply-refund-request",
+  "suiteId": "triage",
+  "suiteHash": "sha256:c1535e03fa902bc37fd89174da8c17c1e1a89e7f645a7e280ba8bfa7e1021798",
+  "score": 0.9750000000000001,
+  "output": "Here's a draft reply:\n\n---\n\nHi there,\n\nThank you for reaching out! I completely understand how frustrating it can be to pay for something you're not using.\n\nUnfortunately, since your purchase was **30 days ago**, it falls outside our **14-day refund window**, so I'm unable to process a refund in this case.\n\nWhat I *can* do is **cancel your auto-renewal** so you won't be charged again going forward. That way, you can continue to have access through the end of your current billing period without any future charges.\n\nWould you like me to go ahead and do that for you? Just let me know and I'll take care of it right away!\n\nBest,\n[Your Name]\nCustomer Support\n\n---",
+  "outputTruncated": false,
+  "outputFullHash": "sha256:c40b3d1906f95cde46d246d93f993a534166cdb07fe07552d02e7e33cf7f2b67",
+  "evaluatorBreakdown": {
+    "rubric-checklist": 0.9750000000000001
+  },
+  "capturedAt": "2026-06-15T21:33:04.950Z",
+  "capturedBy": {
+    "runId": "05c258c4-e57b-40fa-8f1e-565c18449525",
+    "provider": "anthropic/claude-sonnet-4-6"
+  }
+}
