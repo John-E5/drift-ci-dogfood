@@ -1,21 +1,23 @@
 # drift-ci dogfood — support-ticket triage.
 #
-# PINNED MODELS ARE LOAD-BEARING. The system under test is claude-sonnet-4-6;
-# the judge is claude-haiku-4-5 (same provider, different model => no self-bias
-# warning). Changing either model id is a deliberate re-baseline event — the
-# nightly cron exists to catch the provider changing behaviour underneath
-# these pins.
+# PINNED MODEL IS LOAD-BEARING. The system under test is claude-sonnet-4-6.
+# Changing the model id is a deliberate re-baseline event — the nightly cron
+# exists to catch the provider changing behaviour underneath this pin.
 version: 1
 
 provider:
   name: anthropic
   model: claude-sonnet-4-6
 
-# Judge for the llm-judge and rubric-checklist evaluators.
-judge:
-  provider: anthropic
-  model: claude-haiku-4-5
-  allowSelfBias: false
+# Judge config is currently UNUSED — v1 ships only non-judge evaluators
+# (exact-match / json-schema / refusal-detection). The llm-judge & rubric-
+# checklist cases are parked pending upstream drift-ci judge fixes (see the
+# note in suite.yaml). When they return, set a judge whose (provider, model)
+# differs from the test model so self-bias stays off:
+# judge:
+#   provider: anthropic
+#   model: claude-sonnet-4-5
+#   allowSelfBias: false
 
 storage:
   type: json-file
