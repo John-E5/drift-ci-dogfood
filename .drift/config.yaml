@@ -9,15 +9,14 @@ provider:
   name: anthropic
   model: claude-sonnet-4-6
 
-# Judge config is currently UNUSED — v1 ships only non-judge evaluators
-# (exact-match / json-schema / refusal-detection). The llm-judge & rubric-
-# checklist cases are parked pending upstream drift-ci judge fixes (see the
-# note in suite.yaml). When they return, set a judge whose (provider, model)
-# differs from the test model so self-bias stays off:
-# judge:
-#   provider: anthropic
-#   model: claude-sonnet-4-5
-#   allowSelfBias: false
+# Judge for the llm-judge and rubric-checklist evaluators. claude-haiku-4-5 is
+# a different model from the test provider (sonnet-4-6), so self-bias stays off,
+# and it's the cheapest option. Requires drift-ci >= 1.1.3 — earlier versions
+# couldn't parse haiku's fenced judge JSON (the bug this dogfood surfaced).
+judge:
+  provider: anthropic
+  model: claude-haiku-4-5
+  allowSelfBias: false
 
 storage:
   type: json-file

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://drift-ci.dev/schema/baseline-v1.json",
+  "caseId": "reply-bug-report",
+  "suiteId": "triage",
+  "suiteHash": "sha256:10dbfac58176c07cb42dcad3fb394b57cd2c47c87a3cda0ef69c6c6bb61c3583",
+  "score": 0.9375,
+  "output": "Hi there,\n\nThank you for reaching out, and I'm sorry you're running into this — a crash on the settings screen is definitely something we want to get sorted out for you.\n\nTo help our team reproduce and investigate the issue, could you let us know **which version of the app you're running?** You can usually find this at the bottom of the login screen or in your device's app info.\n\nOnce we have that detail, we'll be able to dig in right away. While I can't give a specific timeline for a fix, we take crash reports seriously and will work to resolve it as quickly as possible. I'll make sure your report is flagged for our engineering team.\n\nThanks for taking the time to let us know — we really appreciate it!\n\nBest,\nSupport Team",
+  "outputTruncated": false,
+  "outputFullHash": "sha256:1692672d12de9624a16aae40da3305ba55b8755a91c41c569a80614d38bf5d0b",
+  "evaluatorBreakdown": {
+    "rubric-checklist": 0.9375
+  },
+  "capturedAt": "2026-06-15T21:33:04.955Z",
+  "capturedBy": {
+    "runId": "05c258c4-e57b-40fa-8f1e-565c18449525",
+    "provider": "anthropic/claude-sonnet-4-6"
+  }
+}

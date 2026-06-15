@@ -9,14 +9,14 @@ from `.drift/suite.yaml` and scores them against the committed baselines in
 
 ## What it exercises
 
-One suite, 5 cases, 3 evaluators on a single Anthropic key:
-`exact-match`, `json-schema`, `refusal-detection`.
-System under test: `claude-sonnet-4-6`.
+One suite, 8 cases, 5 evaluators on a single Anthropic key:
+`exact-match`, `json-schema`, `rubric-checklist`, `llm-judge`, `refusal-detection`.
+System under test: `claude-sonnet-4-6`. Judge: `claude-haiku-4-5`.
 
-> **Parked for v1:** the `llm-judge` and `rubric-checklist` cases are temporarily
-> removed. Dogfooding surfaced upstream drift-ci judge bugs that make them
-> unreliable; they'll return once those are fixed. The full 8-case version is in
-> this repo's git history.
+> The `llm-judge` and `rubric-checklist` cases require **drift-ci ≥ 1.1.3**.
+> This dogfood originally surfaced three judge bugs (per-case judge resolution,
+> `temperature` 400s on claude-4.7+, judge-JSON fence intolerance) that were
+> fixed in 1.1.3 — which is exactly the kind of bug a dogfood exists to catch.
 
 ## Two kinds of drift it catches
 
