@@ -1,0 +1,18 @@
+{
+  "$schema": "https://drift-ci.dev/schema/baseline-v1.json",
+  "caseId": "drift",
+  "suiteId": "s3-regression",
+  "suiteHash": "sha256:1c0b2aff617a99c2d6fd88f9e804b6df63940ab1179e5e1df796ec3a27b7b08d",
+  "score": 1,
+  "output": "pong",
+  "outputTruncated": false,
+  "outputFullHash": "sha256:9795c5ff8937f23526ccb207a5684c1fc94a7854e19c021b39d944e51f5baef2",
+  "evaluatorBreakdown": {
+    "exact-match": 1
+  },
+  "capturedAt": "2026-06-16T00:00:00.000Z",
+  "capturedBy": {
+    "runId": "fixture",
+    "provider": "mock/fixture"
+  }
+}

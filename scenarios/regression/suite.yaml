@@ -1,0 +1,9 @@
+version: 1
+id: s3-regression
+name: S3 regression
+cases:
+  - id: drift
+    input: ping
+    expected: pong
+    evaluators: [exact-match]
+    threshold: 0.1
