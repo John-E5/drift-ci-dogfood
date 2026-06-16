@@ -1,0 +1,3 @@
+[
+  { "caseId": "edited", "score": 1, "output": "pong", "staleSuite": true, "evaluatorBreakdown": { "exact-match": 1 } }
+]

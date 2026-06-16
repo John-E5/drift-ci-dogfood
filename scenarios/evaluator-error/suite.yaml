@@ -1,0 +1,11 @@
+version: 1
+id: s2-noscore
+name: S2 evaluator error is no-score
+cases:
+  - id: pass1
+    input: ping
+    expected: pong
+    evaluators: [exact-match]
+  - id: errcase
+    input: whatever
+    evaluators: [cosine-similarity]

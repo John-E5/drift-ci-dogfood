@@ -1,0 +1,28 @@
+name: scenarios
+on:
+  pull_request:
+    paths: ['scenarios/**']
+  push:
+    branches: [main]
+    paths: ['scenarios/**']
+  schedule:
+    - cron: '30 6 * * *'   # 06:30 UTC daily — catch the day a new @latest CLI breaks an invariant
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  scenarios:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install harness deps (re-resolves @latest each run)
+        working-directory: scenarios
+        run: npm install --no-package-lock
+      - name: Run scenario harness
+        working-directory: scenarios
+        run: node run.mjs

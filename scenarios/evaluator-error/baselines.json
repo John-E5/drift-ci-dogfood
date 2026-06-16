@@ -1,0 +1,4 @@
+[
+  { "caseId": "pass1", "score": 1, "output": "pong", "evaluatorBreakdown": { "exact-match": 1 } },
+  { "caseId": "errcase", "score": 1, "output": "prior" }
+]

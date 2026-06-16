@@ -1,0 +1,15 @@
+{
+  "$schema": "https://drift-ci.dev/schema/baseline-v1.json",
+  "caseId": "errcase",
+  "suiteId": "s2-noscore",
+  "suiteHash": "sha256:95b1298ea5ec66e62c1573ce138298c0391bbdfbee82c7f89059b13466f3320b",
+  "score": 1,
+  "output": "prior",
+  "outputTruncated": false,
+  "outputFullHash": "sha256:e5bade0e979cb8cf6e53303dae696c6631a5c82ce60386d7a602f85fb249fcc0",
+  "capturedAt": "2026-06-16T00:00:00.000Z",
+  "capturedBy": {
+    "runId": "fixture",
+    "provider": "mock/fixture"
+  }
+}

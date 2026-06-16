@@ -1,0 +1,9 @@
+version: 1
+provider:
+  name: ollama
+  model: unused
+  baseUrl: http://127.0.0.1:1
+storage:
+  type: json-file
+timeoutMs: 2000
+concurrency: 4
