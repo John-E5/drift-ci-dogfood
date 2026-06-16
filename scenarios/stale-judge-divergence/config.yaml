@@ -1,0 +1,13 @@
+version: 1
+provider:
+  name: mock
+  model: test-model
+judge:
+  provider: mock
+  model: judge-model
+  allowSelfBias: true
+storage:
+  type: json-file
+thresholds:
+  regression: 0.10
+  alert: 0.20

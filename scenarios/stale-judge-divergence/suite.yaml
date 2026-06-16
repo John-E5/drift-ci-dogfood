@@ -1,0 +1,9 @@
+version: 1
+id: s8-stale-judge-divergence
+name: S8 stale judge regression divergence
+cases:
+  - id: judged-drop
+    input: ping
+    evaluators: [llm-judge]
+    criteria: The reply answers the question politely.
+    threshold: 0.1
