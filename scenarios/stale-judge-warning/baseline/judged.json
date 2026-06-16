@@ -1,0 +1,16 @@
+{
+  "$schema": "https://drift-ci.dev/schema/baseline-v1.json",
+  "caseId": "judged",
+  "suiteId": "s6-stale-judge",
+  "suiteHash": "sha256:6061588d27b9ff66e9201f9bfcd07d679e6232c280a00caa588df2e8c2a44e3a",
+  "judgeHash": "sha256:stale-judge-sentinel-never-matches-live",
+  "score": 0,
+  "output": "prior",
+  "outputTruncated": false,
+  "outputFullHash": "sha256:e5bade0e979cb8cf6e53303dae696c6631a5c82ce60386d7a602f85fb249fcc0",
+  "capturedAt": "2026-06-16T00:00:00.000Z",
+  "capturedBy": {
+    "runId": "fixture",
+    "provider": "mock/fixture"
+  }
+}

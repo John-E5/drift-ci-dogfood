@@ -1,0 +1,8 @@
+version: 1
+id: s6-stale-judge
+name: S6 stale judge warning
+cases:
+  - id: judged
+    input: ping
+    evaluators: [llm-judge]
+    criteria: The reply answers the question politely.
