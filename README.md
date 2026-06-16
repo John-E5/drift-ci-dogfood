@@ -52,3 +52,25 @@ export ANTHROPIC_API_KEY=sk-ant-...
 npx @drift-ci/cli@latest run                 # run the suite
 npx @drift-ci/cli@latest baseline doctor     # see missing/stale baselines
 ```
+
+## Scenario harness (`scenarios/`)
+
+Beyond the live Anthropic suite, `scenarios/` is a deterministic, offline,
+**key-less** harness that asserts drift-ci's failure-vs-regression exit-code
+boundaries using the `mock` provider and a dead `baseUrl`. Each subdirectory is
+one scenario (`config.yaml` + `suite.yaml` + committed `baseline/` + an
+`expected.json` of the exit code and `deltas` buckets).
+
+```bash
+cd scenarios
+npm install
+node regenerate.mjs   # rebuild baseline fixtures (after a drift-ci change)
+node run.mjs          # run all scenarios and assert
+```
+
+Baseline `suiteHash`/`judgeHash` are **content-addressed**, so two scenarios with
+identical case content share a hash — that is expected, not a copy-paste error.
+Stale-* scenarios use sentinel hashes that can never match the live suite/judge.
+
+CI runs the harness on every `scenarios/**` change and nightly against
+`@drift-ci/cli@latest`.
