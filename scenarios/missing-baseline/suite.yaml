@@ -1,0 +1,8 @@
+version: 1
+id: s7-missing-baseline
+name: S7 missing baseline
+cases:
+  - id: fresh
+    input: ping
+    expected: pong
+    evaluators: [exact-match]
