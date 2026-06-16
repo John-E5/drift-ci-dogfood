@@ -1,0 +1,20 @@
+version: 1
+id: s1-transient
+name: S1 transient storm
+cases:
+  - id: t1
+    input: x
+    expected: x
+    evaluators: [exact-match]
+  - id: t2
+    input: x
+    expected: x
+    evaluators: [exact-match]
+  - id: t3
+    input: x
+    expected: x
+    evaluators: [exact-match]
+  - id: t4
+    input: x
+    expected: x
+    evaluators: [exact-match]
