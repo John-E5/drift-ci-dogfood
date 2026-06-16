@@ -64,7 +64,8 @@ function runScenario(name) {
 
   const failures = [];
   if (res.status !== expected.exitCode) {
-    failures.push(`exit code: got ${res.status}, want ${expected.exitCode}`);
+    const gotCode = res.status ?? `null (signal: ${res.signal})`;
+    failures.push(`exit code: got ${gotCode}, want ${expected.exitCode}`);
   }
   if (expected.stderrIncludes && !(res.stderr ?? '').includes(expected.stderrIncludes)) {
     failures.push(`stderr missing ${JSON.stringify(expected.stderrIncludes)}`);
@@ -75,8 +76,9 @@ function runScenario(name) {
       payload = JSON.parse(res.stdout);
     } catch {
       failures.push('stdout was not valid JSON (run aborted or crashed?)');
+      return { name, status: 'fail', failures, res };
     }
-    const got = payload?.deltas ?? {};
+    const got = payload.deltas ?? {};
     for (const b of BUCKETS) {
       if (sortedJson(expected.deltas[b]) !== sortedJson(got[b])) {
         failures.push(

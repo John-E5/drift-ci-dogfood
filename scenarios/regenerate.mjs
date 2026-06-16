@@ -55,7 +55,7 @@ for (const name of scenarios) {
     await store.save({
       caseId: spec.caseId,
       suiteId: suite.id,
-      capturedAt: '2026-06-16T00:00:00.000Z',
+      capturedAt: '2026-06-16T00:00:00.000Z', // fixed for deterministic fixtures
       capturedBy: { runId: 'fixture', provider: 'mock/fixture' },
       suiteHash: spec.staleSuite ? STALE_SUITE : computeSuiteHash(tc),
       judgeHash: spec.staleJudge ? STALE_JUDGE : undefined,
