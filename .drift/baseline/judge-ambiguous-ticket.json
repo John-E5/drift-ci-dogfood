@@ -3,12 +3,12 @@
   "caseId": "judge-ambiguous-ticket",
   "suiteId": "triage",
   "suiteHash": "sha256:b9d303c8ec2653736045f83f684dac671271d19a1a16af0d800a3c25b99b86b6",
-  "score": 0.92,
+  "score": 1.0,
   "output": "I'd be happy to help! To point you in the right direction, could you tell me **what specific behavior or error you're seeing** when it's not working?",
   "outputTruncated": false,
   "outputFullHash": "sha256:7c4afbd1eb12bae78a32c8ca988bef4ad3f4a5d204dc826c14c12ca598284d6f",
   "evaluatorBreakdown": {
-    "llm-judge": 0.92
+    "llm-judge": 1.0
   },
   "capturedAt": "2026-06-15T21:33:04.956Z",
   "capturedBy": {

@@ -28,7 +28,7 @@ storage:
 #   token: ${DRIFT_INGEST_TOKEN}
 
 thresholds:
-  regression: 0.10
+  regression: 0.02
   alert: 0.20
 
 baseline:
