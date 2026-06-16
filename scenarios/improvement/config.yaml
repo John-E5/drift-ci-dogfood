@@ -4,7 +4,7 @@ provider:
   model: test-model
   mock:
     responses:
-      ping: pong
+      "what color is the sky?": blue
 storage:
   type: json-file
 thresholds:

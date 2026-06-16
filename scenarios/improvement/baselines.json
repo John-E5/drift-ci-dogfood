@@ -1,3 +1,3 @@
 [
-  { "caseId": "improve", "score": 0, "output": "old-wrong", "evaluatorBreakdown": { "exact-match": 0 } }
+  { "caseId": "improve", "score": 0, "output": "grey", "evaluatorBreakdown": { "exact-match": 0 } }
 ]

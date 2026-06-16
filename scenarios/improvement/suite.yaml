@@ -3,7 +3,7 @@ id: s4-improvement
 name: S4 improvement
 cases:
   - id: improve
-    input: ping
-    expected: pong
+    input: what color is the sky?
+    expected: blue
     evaluators: [exact-match]
     threshold: 0.1
