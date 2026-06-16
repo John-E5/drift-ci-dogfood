@@ -1,0 +1,18 @@
+{
+  "$schema": "https://drift-ci.dev/schema/baseline-v1.json",
+  "caseId": "improve",
+  "suiteId": "s4-improvement",
+  "suiteHash": "sha256:1c0b2aff617a99c2d6fd88f9e804b6df63940ab1179e5e1df796ec3a27b7b08d",
+  "score": 0,
+  "output": "old-wrong",
+  "outputTruncated": false,
+  "outputFullHash": "sha256:a8e3f6f7c956992b53c6318e43dda5fe28d81b75b2c6662548fe34828d2dd846",
+  "evaluatorBreakdown": {
+    "exact-match": 0
+  },
+  "capturedAt": "2026-06-16T00:00:00.000Z",
+  "capturedBy": {
+    "runId": "fixture",
+    "provider": "mock/fixture"
+  }
+}

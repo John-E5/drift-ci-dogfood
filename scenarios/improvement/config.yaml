@@ -1,0 +1,12 @@
+version: 1
+provider:
+  name: mock
+  model: test-model
+  mock:
+    responses:
+      ping: pong
+storage:
+  type: json-file
+thresholds:
+  regression: 0.10
+  alert: 0.20

@@ -1,0 +1,9 @@
+version: 1
+id: s4-improvement
+name: S4 improvement
+cases:
+  - id: improve
+    input: ping
+    expected: pong
+    evaluators: [exact-match]
+    threshold: 0.1
