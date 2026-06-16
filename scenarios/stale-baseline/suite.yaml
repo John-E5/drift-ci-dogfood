@@ -1,0 +1,8 @@
+version: 1
+id: s5-stale-baseline
+name: S5 stale baseline
+cases:
+  - id: edited
+    input: ping
+    expected: pong
+    evaluators: [exact-match]
