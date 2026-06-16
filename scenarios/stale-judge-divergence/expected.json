@@ -1,6 +1,4 @@
 {
   "exitCode": 0,
-  "deltas": { "staleJudges": ["judged-drop"] },
-  "quarantined": true,
-  "quarantineReason": "asserts the stale-judge invariant (exit 0); needs the computeDeltas fix (Deliverable 1) on @latest. Un-quarantine in Phase 4 Task 4.3."
+  "deltas": { "staleJudges": ["judged-drop"] }
 }
