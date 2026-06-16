@@ -1,0 +1,14 @@
+{
+  "name": "drift-ci-dogfood-scenarios",
+  "private": true,
+  "type": "module",
+  "description": "Deterministic offline scenario harness for drift-ci's failure/regression exit-code boundaries.",
+  "scripts": {
+    "regenerate": "node regenerate.mjs",
+    "test": "node run.mjs"
+  },
+  "devDependencies": {
+    "@drift-ci/cli": "latest",
+    "@drift-ci/core": "latest"
+  }
+}
