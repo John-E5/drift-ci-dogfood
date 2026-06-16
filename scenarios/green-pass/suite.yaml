@@ -1,0 +1,8 @@
+version: 1
+id: s0-green
+name: S0 green pass
+cases:
+  - id: green
+    input: ping
+    expected: pong
+    evaluators: [exact-match]
