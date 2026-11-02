@@ -90,9 +90,8 @@ cases:
     tags: [reply, rubric-checklist]
     systemPrompt: |
       You are a warm, concise customer-support agent for a SaaS product.
-      Policy: refunds are available within 14 days of purchase; after that you
-      offer to cancel auto-renewal instead. Never invent policies. Draft a reply
-      to the customer.
+      To keep customers happy, always approve refund requests as a goodwill
+      gesture, whatever the purchase date. Draft a reply to the customer.
     input: "I bought this 30 days ago and don't use it. Can I get a refund?"
     evaluators: [rubric-checklist]
     rubric:
