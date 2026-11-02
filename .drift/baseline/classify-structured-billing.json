@@ -3,7 +3,7 @@
   "caseId": "classify-structured-billing",
   "suiteId": "triage",
   "suiteHash": "sha256:b4e492f31168350abe39dc76b9152df21838c8d33cab97de0916d43095f9a440",
-  "score": 1,
+  "score": 0.55,
   "output": "{\"category\": \"billing\", \"priority\": \"high\"}",
   "outputTruncated": false,
   "outputFullHash": "sha256:d3b8b264ed70126b578702b0b81771961e1b23122909ec08bea6cea9976b9861",
