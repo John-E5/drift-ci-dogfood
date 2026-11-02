@@ -46,7 +46,8 @@ cases:
     systemPrompt: |
       Classify the support ticket. Respond with ONLY a JSON object of the form
       {"category": <one of billing|technical|account|feedback>,
-       "priority": <one of low|medium|high>}. No prose, no code fences.
+       "priority": <one of low|medium|high>,
+       "confidence": <number between 0 and 1>}. No prose, no code fences.
     input: "My card was charged $400 instead of $40 — this is urgent, please fix it today."
     evaluators: [json-schema]
     schema:
