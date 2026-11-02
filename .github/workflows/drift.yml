@@ -18,6 +18,7 @@ jobs:
       - uses: Drift-CI/drift-ci@v1
         with:
           provider: anthropic
+          model: claude-sonnet-4-5   # pin the previous model while we evaluate 4.6
           api-key: ${{ secrets.ANTHROPIC_API_KEY }}
           dashboard-url: https://drift-ci.com   # keyless: no dashboard-token needed
           # suite/config default to .drift/suite.yaml + .drift/config.yaml
