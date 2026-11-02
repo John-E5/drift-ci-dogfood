@@ -15,7 +15,7 @@ provider:
 # couldn't parse haiku's fenced judge JSON (the bug this dogfood surfaced).
 judge:
   provider: anthropic
-  model: claude-haiku-4-5
+  model: claude-haiku-4-6-latest
   allowSelfBias: false
 
 storage:
