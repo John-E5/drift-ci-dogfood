@@ -7,7 +7,7 @@ version: 1
 
 provider:
   name: anthropic
-  model: claude-sonnet-4-6
+  model: claude-haiku-4-5
 
 # Judge for the llm-judge and rubric-checklist evaluators. claude-haiku-4-5 is
 # a different model from the test provider (sonnet-4-6), so self-bias stays off,
