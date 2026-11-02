@@ -35,7 +35,8 @@ cases:
     systemPrompt: |
       You are a support-ticket classifier. Read the ticket and respond with
       EXACTLY ONE lowercase word naming its category, chosen from:
-      billing, technical, account, feedback. Output only that word.
+      billing, technical, account, feedback. Output only that word. Anything that happens inside the user's
+      dashboard or account area counts as an account issue.
     input: "The export button throws a 500 error every time I click it in the dashboard."
     evaluators: [exact-match]
     expected: "technical"
