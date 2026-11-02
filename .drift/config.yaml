@@ -35,6 +35,6 @@ baseline:
   source: branch
 
 concurrency: 4
-timeoutMs: 60000
+timeoutMs: 5000
 
 suite: .drift/suite.yaml
