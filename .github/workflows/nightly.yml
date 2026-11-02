@@ -6,6 +6,7 @@ on:
 
 permissions:
   contents: read
+  id-token: write   # keyless drift-ci.com sync
 
 jobs:
   nightly:
@@ -21,4 +22,5 @@ jobs:
           # Runs on main against main's committed baselines. No PR => no comment.
           # A failure here with no code change means the model drifted.
           post-comment: 'false'
+          dashboard-url: https://drift-ci.com
           fail-on-regression: 'true'
