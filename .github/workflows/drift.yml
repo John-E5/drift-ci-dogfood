@@ -15,7 +15,7 @@ jobs:
         with:
           fetch-depth: 0          # full history so origin/main is present for
                                   # baseline-source diffs + baseline-changed detection
-      - uses: Drift-CI/drift-ci@29a7666
+      - uses: Drift-CI/drift-ci@29a7666813ab9c7647777c1caf4463e5db8c417f
         with:
           provider: anthropic
           api-key: ${{ secrets.ANTHROPIC_API_KEY }}
