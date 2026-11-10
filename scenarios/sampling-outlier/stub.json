@@ -1,0 +1,9 @@
+{
+  "responses": {
+    "ping": [
+      "pong",
+      "no idea",
+      "PONG!"
+    ]
+  }
+}

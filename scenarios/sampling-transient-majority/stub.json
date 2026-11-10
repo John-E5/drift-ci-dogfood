@@ -1,0 +1,13 @@
+{
+  "responses": {
+    "ping": [
+      {
+        "status": 500
+      },
+      "pong",
+      {
+        "status": 500
+      }
+    ]
+  }
+}

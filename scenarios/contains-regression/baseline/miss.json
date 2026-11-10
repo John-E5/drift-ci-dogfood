@@ -1,0 +1,18 @@
+{
+  "$schema": "https://drift-ci.dev/schema/baseline-v1.json",
+  "caseId": "miss",
+  "suiteId": "s10-contains-regression",
+  "suiteHash": "sha256:91cc6a9f2c4058822f62962e66678eceb1debdc12e81b97728c5e10da7b911b4",
+  "score": 1,
+  "output": "Sure — PONG!",
+  "outputTruncated": false,
+  "outputFullHash": "sha256:87b6b8f50d93f39db65530149c069bad43ebcb1f7c0ccaaa44f880e4543449ed",
+  "evaluatorBreakdown": {
+    "contains": 1
+  },
+  "capturedAt": "2026-06-16T00:00:00.000Z",
+  "capturedBy": {
+    "runId": "fixture",
+    "provider": "mock/fixture"
+  }
+}

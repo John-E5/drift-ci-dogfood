@@ -1,0 +1,10 @@
+[
+  {
+    "caseId": "miss",
+    "score": 1,
+    "output": "Sure \u2014 PONG!",
+    "evaluatorBreakdown": {
+      "contains": 1
+    }
+  }
+]

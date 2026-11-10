@@ -1,0 +1,10 @@
+version: 1
+id: s12-sampling-outlier
+name: S12 median of 3 ignores one bad answer (contains + suite default_runs)
+default_runs: 3
+cases:
+  - id: flaky-answer
+    input: ping
+    contains: [pong]
+    evaluators: [contains]
+    threshold: 0.1

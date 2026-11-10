@@ -1,0 +1,10 @@
+[
+  {
+    "caseId": "broken",
+    "score": 1,
+    "output": "pong",
+    "evaluatorBreakdown": {
+      "exact-match": 1
+    }
+  }
+]

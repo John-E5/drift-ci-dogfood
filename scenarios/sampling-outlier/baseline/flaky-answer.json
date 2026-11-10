@@ -1,0 +1,18 @@
+{
+  "$schema": "https://drift-ci.dev/schema/baseline-v1.json",
+  "caseId": "flaky-answer",
+  "suiteId": "s12-sampling-outlier",
+  "suiteHash": "sha256:c03c7cea65b5eef29be6a94c9ff64ad3157fd6c9df2cc1ad38a53066664cd971",
+  "score": 1,
+  "output": "pong",
+  "outputTruncated": false,
+  "outputFullHash": "sha256:9795c5ff8937f23526ccb207a5684c1fc94a7854e19c021b39d944e51f5baef2",
+  "evaluatorBreakdown": {
+    "contains": 1
+  },
+  "capturedAt": "2026-06-16T00:00:00.000Z",
+  "capturedBy": {
+    "runId": "fixture",
+    "provider": "mock/fixture"
+  }
+}

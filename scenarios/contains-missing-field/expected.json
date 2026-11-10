@@ -1,0 +1,1 @@
+{"exitCode": 1, "stderrIncludes": "A case using the `contains` evaluator must define a non-empty `contains` field."}

@@ -1,0 +1,9 @@
+version: 1
+id: s15-sampling-transient-majority
+name: S15 two failed samples out of 3 make the case a transient no-score
+cases:
+  - id: outage
+    input: ping
+    expected: pong
+    evaluators: [exact-match]
+    runs: 3

@@ -1,0 +1,9 @@
+version: 1
+id: s10-contains-regression
+name: S10 contains regresses when one required value goes missing
+cases:
+  - id: miss
+    input: ping
+    contains: [pong, sure]
+    evaluators: [contains]
+    threshold: 0.1

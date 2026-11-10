@@ -1,0 +1,10 @@
+version: 1
+id: s13-sampling-regression
+name: S13 median of 3 still catches a real regression (case runs)
+cases:
+  - id: broken
+    input: ping
+    expected: pong
+    evaluators: [exact-match]
+    threshold: 0.1
+    runs: 3

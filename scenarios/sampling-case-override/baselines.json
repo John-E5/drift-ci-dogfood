@@ -1,0 +1,18 @@
+[
+  {
+    "caseId": "sampled",
+    "score": 1,
+    "output": "pong",
+    "evaluatorBreakdown": {
+      "exact-match": 1
+    }
+  },
+  {
+    "caseId": "once",
+    "score": 1,
+    "output": "hi",
+    "evaluatorBreakdown": {
+      "exact-match": 1
+    }
+  }
+]
