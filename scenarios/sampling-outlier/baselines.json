@@ -1,0 +1,10 @@
+[
+  {
+    "caseId": "flaky-answer",
+    "score": 1,
+    "output": "pong",
+    "evaluatorBreakdown": {
+      "contains": 1
+    }
+  }
+]

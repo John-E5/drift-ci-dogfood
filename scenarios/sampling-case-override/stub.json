@@ -1,0 +1,10 @@
+{
+  "responses": {
+    "ping": [
+      "pong"
+    ],
+    "hello": [
+      "hi"
+    ]
+  }
+}

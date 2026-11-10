@@ -1,0 +1,9 @@
+version: 1
+id: s14-sampling-transient-minority
+name: S14 one failed sample out of 3 still scores
+cases:
+  - id: blip
+    input: ping
+    expected: pong
+    evaluators: [exact-match]
+    runs: 3

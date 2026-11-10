@@ -1,0 +1,18 @@
+{
+  "$schema": "https://drift-ci.dev/schema/baseline-v1.json",
+  "caseId": "hit",
+  "suiteId": "s9-contains-pass",
+  "suiteHash": "sha256:11ae1a64f19ec43c519a05273b76b8767fa7d9f78b9399aab44ff700a485609c",
+  "score": 1,
+  "output": "Sure — PONG!",
+  "outputTruncated": false,
+  "outputFullHash": "sha256:87b6b8f50d93f39db65530149c069bad43ebcb1f7c0ccaaa44f880e4543449ed",
+  "evaluatorBreakdown": {
+    "contains": 1
+  },
+  "capturedAt": "2026-06-16T00:00:00.000Z",
+  "capturedBy": {
+    "runId": "fixture",
+    "provider": "mock/fixture"
+  }
+}

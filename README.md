@@ -68,6 +68,23 @@ node regenerate.mjs   # rebuild baseline fixtures (after a drift-ci change)
 node run.mjs          # run all scenarios and assert
 ```
 
+Scenarios with a `stub.json` use a local Ollama-compatible stub instead of the
+`mock` provider, so each call can return a different scripted answer (or an
+HTTP error). That is how the repeated-sampling scenarios (`runs` /
+`default_runs`, median of N) test an outlier answer or a failed sample. The
+stub's address replaces `${STUB_URL}` in the scenario's `config.yaml`, and
+`expected.json` can also assert per-case `status` / `score` / `samples` and the
+total `stubCalls`.
+
+| Scenario | Checks |
+|---|---|
+| `contains-pass` / `contains-regression` | `contains` evaluator: case-insensitive, all values required |
+| `contains-missing-field` | a `contains` case without a `contains` list is rejected |
+| `sampling-outlier` | median of 3 ignores one bad answer (suite `default_runs`) |
+| `sampling-regression` | median of 3 still catches a real regression (case `runs`) |
+| `sampling-transient-minority` / `-majority` | 1 of 3 failed samples still scores; 2 of 3 is a transient no-score |
+| `sampling-case-override` | a case's `runs: 1` overrides the suite default |
+
 Baseline `suiteHash`/`judgeHash` are **content-addressed**, so two scenarios with
 identical case content share a hash — that is expected, not a copy-paste error.
 Stale-* scenarios use sentinel hashes that can never match the live suite/judge.

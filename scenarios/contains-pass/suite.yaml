@@ -1,0 +1,8 @@
+version: 1
+id: s9-contains-pass
+name: S9 contains passes (case-insensitive, every value present)
+cases:
+  - id: hit
+    input: ping
+    contains: [pong, sure]
+    evaluators: [contains]

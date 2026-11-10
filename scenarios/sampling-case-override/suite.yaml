@@ -1,0 +1,14 @@
+version: 1
+id: s16-sampling-case-override
+name: S16 suite default_runs applies; a case runs 1 overrides it
+default_runs: 3
+cases:
+  - id: sampled
+    input: ping
+    expected: pong
+    evaluators: [exact-match]
+  - id: once
+    input: hello
+    expected: hi
+    evaluators: [exact-match]
+    runs: 1

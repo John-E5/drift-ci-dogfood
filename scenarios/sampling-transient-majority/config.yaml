@@ -1,0 +1,11 @@
+version: 1
+provider:
+  name: ollama
+  model: stub
+  baseUrl: ${STUB_URL}
+storage:
+  type: json-file
+timeoutMs: 5000
+thresholds:
+  regression: 0.10
+  alert: 0.20

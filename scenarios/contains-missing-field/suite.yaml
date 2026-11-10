@@ -1,0 +1,7 @@
+version: 1
+id: s11-contains-invalid
+name: S11 contains evaluator without a contains field is rejected
+cases:
+  - id: bad
+    input: ping
+    evaluators: [contains]
