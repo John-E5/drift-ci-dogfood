@@ -9,6 +9,7 @@
   },
   "devDependencies": {
     "@drift-ci/cli": "latest",
-    "@drift-ci/core": "latest"
+    "@drift-ci/core": "latest",
+    "llm-stub": "^0.1.0"
   }
 }
