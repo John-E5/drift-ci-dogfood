@@ -1,0 +1,19 @@
+{
+  "$schema": "https://drift-ci.dev/schema/baseline-v1.json",
+  "caseId": "tool-no-call-thanks",
+  "suiteId": "triage",
+  "suiteHash": "sha256:2594856c31dfdd8743a107896e4741b62cd91a4dc2c6a15c1dcc0af32faacae9",
+  "score": 1,
+  "output": "You're welcome! Glad everything is sorted out. Don't hesitate to reach out if you need anything else. Have a great day! 😊",
+  "outputTruncated": false,
+  "outputFullHash": "sha256:ae02d2e542cd23683c6b873a2b4d11e6c04a57c0056321fb9b58eee1f4cae621",
+  "evaluatorBreakdown": {
+    "tool-call": 1
+  },
+  "capturedAt": "2026-11-17T18:18:17.223Z",
+  "capturedBy": {
+    "commit": "0d48bb57c08563e8fbbb05494aab1ea229f7c24b",
+    "runId": "e0972a2c-84f0-48a6-92ad-e883a98cd143",
+    "provider": "anthropic/claude-sonnet-4-6"
+  }
+}

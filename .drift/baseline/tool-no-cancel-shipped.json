@@ -1,0 +1,19 @@
+{
+  "$schema": "https://drift-ci.dev/schema/baseline-v1.json",
+  "caseId": "tool-no-cancel-shipped",
+  "suiteId": "triage",
+  "suiteHash": "sha256:5ef0c149c48502597ed257f325c0c281d16439fe1208ccd9c16bee7a5f0bdf8e",
+  "score": 1,
+  "output": "Let me look up that order first to check its status.\n→ get_order {\"order_id\":\"ORD-556\"}\n← {\"order_id\":\"ORD-556\",\"status\":\"shipped\",\"total\":64}\n\nUnfortunately, I can't cancel ORD-556 — it has already **shipped**. Cancellations are only possible while an order is still in **processing** status.\n\nIf there's an issue with the order once it arrives, I can help with a refund or other options. Let me know!",
+  "outputTruncated": false,
+  "outputFullHash": "sha256:08ef7148a5271fffa3bed073a46df971ac469db8ec134d37c8a8b56cdc58d475",
+  "evaluatorBreakdown": {
+    "tool-call": 1
+  },
+  "capturedAt": "2026-11-17T18:18:17.224Z",
+  "capturedBy": {
+    "commit": "0d48bb57c08563e8fbbb05494aab1ea229f7c24b",
+    "runId": "e0972a2c-84f0-48a6-92ad-e883a98cd143",
+    "provider": "anthropic/claude-sonnet-4-6"
+  }
+}

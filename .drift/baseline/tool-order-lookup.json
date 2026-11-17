@@ -1,0 +1,19 @@
+{
+  "$schema": "https://drift-ci.dev/schema/baseline-v1.json",
+  "caseId": "tool-order-lookup",
+  "suiteId": "triage",
+  "suiteHash": "sha256:41c6cd581447c2fd260ab8d1b051f56d0ab74ade4f6a79fc8f242d63e785d93c",
+  "score": 1,
+  "output": "Let me look that up for you right away!\n\n→ get_order {\"order_id\":\"ORD-48213\"}",
+  "outputTruncated": false,
+  "outputFullHash": "sha256:d548fe90c7d9903dd94115b44629ed67fbcd5dd4574747b1e00837f9f808c0d5",
+  "evaluatorBreakdown": {
+    "tool-call": 1
+  },
+  "capturedAt": "2026-11-17T18:18:17.222Z",
+  "capturedBy": {
+    "commit": "0d48bb57c08563e8fbbb05494aab1ea229f7c24b",
+    "runId": "e0972a2c-84f0-48a6-92ad-e883a98cd143",
+    "provider": "anthropic/claude-sonnet-4-6"
+  }
+}
