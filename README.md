@@ -9,8 +9,10 @@ from `.drift/suite.yaml` and scores them against the committed baselines in
 
 ## What it exercises
 
-One suite, 8 cases, 5 evaluators on a single Anthropic key:
-`exact-match`, `json-schema`, `rubric-checklist`, `llm-judge`, `refusal-detection`.
+One suite, 13 cases, 6 evaluators on a single Anthropic key:
+`exact-match`, `json-schema`, `rubric-checklist`, `llm-judge`, `refusal-detection`,
+`tool-call` (an order-support agent, including multi-step cases with scripted
+tool results).
 System under test: `claude-sonnet-4-6`. Judge: `claude-haiku-4-5`.
 
 > The `llm-judge` and `rubric-checklist` cases require **drift-ci ≥ 1.1.3**.
@@ -38,6 +40,11 @@ npx @drift-ci/cli@latest run            # produce a fresh run
 npx @drift-ci/cli@latest baseline accept --all   # adopt the new outputs
 git add .drift/baseline && git commit   # commit baselines in the SAME PR
 ```
+
+For **new** cases there is no local key needed: label the PR
+`accept-missing-baselines` and the `accept-missing-baselines` workflow runs the
+suite with the repo secret, accepts baselines only for cases that have none, and
+commits them to the PR branch. Push a commit or re-run `drift` afterwards.
 
 ## Pinned models are load-bearing
 
