@@ -1,0 +1,50 @@
+name: accept-missing-baselines
+
+# Label a PR `accept-missing-baselines` to record baselines for cases that don't
+# have one yet (new cases), using the repo's API key, and commit them to the PR
+# branch. Existing baselines are never touched. Same-repo PRs only.
+#
+# Commits pushed with GITHUB_TOKEN don't trigger other workflows, so push any
+# new commit (or re-run the `drift` check) afterwards to see the comparison.
+on:
+  pull_request:
+    types: [labeled]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  accept:
+    if: github.event.label.name == 'accept-missing-baselines' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Run the suite and accept baselines for new cases only
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          missing=$(npx -y @drift-ci/cli@latest baseline doctor .drift/suite.yaml \
+            | awk '/^Missing baselines/{f=1;next} /^[A-Za-z]/{f=0} f && /^  - /{print $2}' | paste -sd, -)
+          if [ -z "$missing" ]; then echo "No missing baselines."; exit 0; fi
+          echo "Accepting: $missing"
+          code=0; npx -y @drift-ci/cli@latest run .drift/suite.yaml || code=$?
+          # 1 = a regression elsewhere in the suite (reported, not our concern here); 2 = aborted run.
+          if [ "$code" -ge 2 ]; then echo "Run aborted (exit $code)"; exit "$code"; fi
+          npx -y @drift-ci/cli@latest baseline accept .drift/suite.yaml --cases "$missing" --commit "$(git rev-parse HEAD)"
+      - name: Commit the new baselines
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git add .drift/baseline
+          if git diff --cached --quiet; then echo "Nothing to commit."; else
+            git -c user.name="github-actions[bot]" -c user.email="41898283+github-actions[bot]@users.noreply.github.com" \
+              commit -m "test: accept baselines for new cases"
+            git push
+          fi
+          gh pr edit "${{ github.event.pull_request.number }}" --remove-label accept-missing-baselines

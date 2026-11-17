@@ -1,0 +1,19 @@
+{
+  "$schema": "https://drift-ci.dev/schema/baseline-v1.json",
+  "caseId": "tool-cancel-unshipped",
+  "suiteId": "triage",
+  "suiteHash": "sha256:135eb22b0f4c144d4c3b0a719b74ee0f8805fade287401c104f80ab613ff65d1",
+  "score": 1,
+  "output": "Let me look up that order first.\n→ get_order {\"order_id\":\"ORD-555\"}\n← {\"order_id\":\"ORD-555\",\"status\":\"processing\",\"total\":38.5}\nGreat news — the order is still in **processing**, so I can cancel it right away.\n→ cancel_order {\"order_id\":\"ORD-555\"}\n← {\"ok\":true}\n\nYour order **ORD-555** has been successfully cancelled. You should receive a confirmation shortly. Is there anything else I can help you with?",
+  "outputTruncated": false,
+  "outputFullHash": "sha256:2ab3dfd30a8cacb42c3148ea4bb1cc97c3d31e9e51d1be98d0897b99709a306d",
+  "evaluatorBreakdown": {
+    "tool-call": 1
+  },
+  "capturedAt": "2026-11-17T18:18:17.224Z",
+  "capturedBy": {
+    "commit": "0d48bb57c08563e8fbbb05494aab1ea229f7c24b",
+    "runId": "e0972a2c-84f0-48a6-92ad-e883a98cd143",
+    "provider": "anthropic/claude-sonnet-4-6"
+  }
+}

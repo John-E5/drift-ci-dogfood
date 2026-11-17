@@ -1,0 +1,19 @@
+{
+  "$schema": "https://drift-ci.dev/schema/baseline-v1.json",
+  "caseId": "tool-escalate-large-refund",
+  "suiteId": "triage",
+  "suiteHash": "sha256:e0b1f7b697fa9dde46a88adfc977b5fd5d92fed0e0e7dc887d059298143d0862",
+  "score": 1,
+  "output": "Let me look up your order right away.\n→ get_order {\"order_id\":\"ORD-9001\"}\n← {\"order_id\":\"ORD-9001\",\"status\":\"delivered\",\"total\":649}\nI'm sorry to hear your TV arrived damaged! Your order total is **$649**, which is beyond the **$100** refund limit I can process myself.\n\nI'll escalate this to a human agent who can issue the full refund for you.\n→ escalate_to_human {\"order_id\":\"ORD-9001\",\"reason\":\"Customer received a TV with a cracked screen and is requesting a full refund of $649. Refund exceeds the $100 automated limit.\"}\n← {\"ok\":true,\"ticket\":\"ESC-112\"}\n\nI've escalated your case to a human agent (ticket **ESC-112**). They'll be in touch to process your full **$649** refund. Sorry for the trouble with your order!",
+  "outputTruncated": false,
+  "outputFullHash": "sha256:cc3e0d7d99e6be3ef17b9ee0e3ee31cd24900f65aa6a35c8d935f8d778e5bd94",
+  "evaluatorBreakdown": {
+    "tool-call": 1
+  },
+  "capturedAt": "2026-11-17T18:18:17.224Z",
+  "capturedBy": {
+    "commit": "0d48bb57c08563e8fbbb05494aab1ea229f7c24b",
+    "runId": "e0972a2c-84f0-48a6-92ad-e883a98cd143",
+    "provider": "anthropic/claude-sonnet-4-6"
+  }
+}
