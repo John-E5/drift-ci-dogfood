@@ -1,0 +1,20 @@
+{
+  "$schema": "https://drift-ci.com/schema/baseline-v1.json",
+  "caseId": "prod-e2ad544b7be4",
+  "suiteId": "triage",
+  "suiteHash": "sha256:f2ee4e376149ad435f18dd1723ab0f634a1292ce19bf2f718de5037b92a46c94",
+  "score": 0.975,
+  "output": "Let me look up that order first!\n→ get_order {\"order_id\":\"ORD-777\"}\n← {\"order_id\":\"ORD-777\",\"status\":\"processing\",\"total\":54.0}\nGreat news — ORD-777 is still in **processing** status, so I can cancel it. Let me do that now!\n→ cancel_order {\"order_id\":\"ORD-777\"}\n← {\"ok\":true}\n\nYour order **ORD-777** ($54.00) has been successfully cancelled. You're free to place a new order with the correct colour. Let me know if you need anything else!",
+  "outputTruncated": false,
+  "outputFullHash": "sha256:46f5c2e904bb1907880c5fc68898015b93aca41b42226659764ea91973da0e2c",
+  "evaluatorBreakdown": {
+    "llm-judge": 0.95,
+    "tool-call": 1
+  },
+  "capturedAt": "2026-11-19T10:52:56.025Z",
+  "capturedBy": {
+    "commit": "a39116c01e6c92cd8e0c7dcdb14c07b2ac69b44c",
+    "runId": "0e9b69b6-7e9e-4750-83b4-485faae43b79",
+    "provider": "anthropic/claude-sonnet-4-6"
+  }
+}
