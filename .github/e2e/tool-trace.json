@@ -1,0 +1,17 @@
+{
+  "model": "claude-sonnet-4-6",
+  "tags": ["e2e", "tool-calls"],
+  "tools": [
+    { "type": "function", "function": { "name": "get_order", "description": "Look up an order by its ID. Returns its status and total.", "parameters": { "type": "object", "properties": { "order_id": { "type": "string" } }, "required": ["order_id"] } } },
+    { "type": "function", "function": { "name": "cancel_order", "description": "Cancel an order that has not shipped yet.", "parameters": { "type": "object", "properties": { "order_id": { "type": "string" } }, "required": ["order_id"] } } }
+  ],
+  "messages": [
+    { "role": "system", "content": "You are the support agent for an online shop. Use the tools to look up and change orders; never guess an order's status. Only cancel an order whose status is \"processing\". Keep replies short." },
+    { "role": "user", "content": "Hi, can you cancel order ORD-777? I ordered the wrong colour." },
+    { "role": "assistant", "content": null, "tool_calls": [ { "id": "call_1", "type": "function", "function": { "name": "get_order", "arguments": "{\"order_id\":\"ORD-777\"}" } } ] },
+    { "role": "tool", "tool_call_id": "call_1", "content": "{\"order_id\":\"ORD-777\",\"status\":\"processing\",\"total\":54.0}" },
+    { "role": "assistant", "content": null, "tool_calls": [ { "id": "call_2", "type": "function", "function": { "name": "cancel_order", "arguments": "{\"order_id\":\"ORD-777\"}" } } ] },
+    { "role": "tool", "tool_call_id": "call_2", "content": "{\"ok\":true}" },
+    { "role": "assistant", "content": "Done: order ORD-777 was still processing, so I've cancelled it. You'll get a confirmation email shortly." }
+  ]
+}

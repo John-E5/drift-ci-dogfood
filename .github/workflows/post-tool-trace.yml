@@ -1,0 +1,28 @@
+name: post-tool-trace
+
+# End-to-end check for drift-ci.com trace capture: posts one recorded
+# tool-call conversation (.github/e2e/tool-trace.json) to the Production
+# traces endpoint. Needs a DRIFT_TRACES_TOKEN repo secret (a Production traces
+# token for this repo's drift-ci.com project). Run manually from the Actions tab.
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Post the trace
+        env:
+          DRIFT_TRACES_TOKEN: ${{ secrets.DRIFT_TRACES_TOKEN }}
+        run: |
+          if [ -z "$DRIFT_TRACES_TOKEN" ]; then echo "::error::Set the DRIFT_TRACES_TOKEN secret first."; exit 1; fi
+          status=$(curl -sS -o response.json -w '%{http_code}' -X POST https://drift-ci.com/api/v1/traces \
+            -H "Authorization: Bearer $DRIFT_TRACES_TOKEN" \
+            -H "Content-Type: application/json" \
+            --data-binary @.github/e2e/tool-trace.json)
+          echo "HTTP $status"; cat response.json; echo
+          [ "$status" = "200" ] && grep -q '"accepted":1\|"duplicates":1' response.json
